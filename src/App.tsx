@@ -1,9 +1,11 @@
-import { MantineProvider, Text } from '@mantine/core';
+import { Paper, Text } from '@mantine/core';
+import ThemeButton from './components/ThemeButton';
 
 export default function App() {
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <Paper>
       <Text>Welcome to Mantine!</Text>
-    </MantineProvider>
+      <ThemeButton />
+    </Paper>
   );
 }
