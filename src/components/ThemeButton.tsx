@@ -1,4 +1,4 @@
-import { ActionIcon, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, Flex, useMantineColorScheme } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import { FC } from 'react';
 
@@ -8,9 +8,11 @@ const ThemeButton: FC = () => {
   const dark = colorScheme === 'dark';
 
   return (
-    <ActionIcon variant="outline" color={dark ? 'yellow' : 'blue'} onClick={() => toggleColorScheme()} title={dark ? 'Light mode' : 'Dark mode'}>
-      {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
-    </ActionIcon>
+    <Flex justify="flex-end">
+      <ActionIcon variant="outline" color={dark ? 'yellow' : 'blue'} onClick={() => toggleColorScheme()} title={dark ? 'Light mode' : 'Dark mode'}>
+        {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
+      </ActionIcon>
+    </Flex>
   );
 };
 
