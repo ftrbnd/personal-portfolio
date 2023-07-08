@@ -18,7 +18,7 @@ const HeaderContent: FC<IProps> = ({ navbarOpened, setNavbarOpened }) => {
         </MediaQuery>{' '}
       </Grid.Col>
       <Grid.Col span={6}>
-        <Title order={2} align="center">
+        <Title order={1} align="center">
           Giovanni Salas
         </Title>
       </Grid.Col>
