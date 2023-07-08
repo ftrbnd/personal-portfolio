@@ -33,10 +33,17 @@ export default function App() {
     >
       <Flex direction="column" gap={{ base: 'sm', sm: 'lg' }} justify="center">
         <AboutMe />
-        <Grid columns={3} gutterXs="md" gutterMd="xl" gutterXl={50}>
+        <Grid columns={3} gutterXs="md" gutterMd="xl" gutterXl={50} sx={{ maxWidth: '75%', alignSelf: 'center' }}>
           {projects.map((project, index) => (
-            <Grid.Col key={`${project.name}-${index}`} sm={3} md={1.5} lg={1}>
-              <ProjectCard name={project.name} description={project.description} thumbnailUrl={project.thumbnailUrl} repoUrl={project.repoUrl} demoUrl={project.demoUrl} />
+            <Grid.Col sm={3} md={1.5} lg={1} sx={{ justifySelf: 'center' }}>
+              <ProjectCard
+                key={`${project.name}-${index}`}
+                name={project.name}
+                description={project.description}
+                thumbnailUrl={project.thumbnailUrl}
+                repoUrl={project.repoUrl}
+                demoUrl={project.demoUrl}
+              />
             </Grid.Col>
           ))}
         </Grid>

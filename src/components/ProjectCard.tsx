@@ -5,7 +5,7 @@ import { Project } from '../utils';
 
 const ProjectCard: FC<Project> = ({ name, description, thumbnailUrl, repoUrl, demoUrl }) => {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+    <Card shadow="sm" padding="lg" radius="md" withBorder sx={{ height: '100%' }}>
       <Card.Section>
         <Image src={thumbnailUrl} height={400} alt={`${name} thumbnail`} />
       </Card.Section>
