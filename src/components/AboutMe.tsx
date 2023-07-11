@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { Card, CardBody, CardFooter, Image, Text, Stack, IconButton, Heading, ButtonGroup, Link } from '@chakra-ui/react';
+import { Card, CardBody, CardFooter, Image, Text, Stack, IconButton, Heading, ButtonGroup, Link, useColorModeValue } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 
 const AboutMe: FC = () => {
+  const bg = useColorModeValue('gray.200', 'gray.600');
+
   return (
     <Card direction={{ base: 'column', xl: 'row' }} overflow="hidden" variant="filled">
       <Image objectFit="cover" src="src\assets\me.png" alt="Picture of me" maxH="md" />
@@ -19,10 +21,10 @@ const AboutMe: FC = () => {
         <CardFooter justifyContent="flex-end">
           <ButtonGroup gap={2}>
             <Link href="https://github.com/ftrbnd" isExternal>
-              <IconButton aria-label="GitHub profile" icon={<FaGithub />} />
+              <IconButton aria-label="GitHub profile" icon={<FaGithub />} bgColor={bg} />
             </Link>
             <Link href="https://www.linkedin.com/in/ftrbnd/" isExternal>
-              <IconButton aria-label="LinkedIn profile" icon={<FaLinkedin />} />
+              <IconButton aria-label="LinkedIn profile" icon={<FaLinkedin />} bgColor={bg} />
             </Link>
           </ButtonGroup>
         </CardFooter>
