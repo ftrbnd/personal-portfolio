@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Card, CardBody, CardFooter, Image, Text, Stack, IconButton, Heading, ButtonGroup, Link, useColorModeValue } from '@chakra-ui/react';
+import { Card, CardBody, CardFooter, Image, Text, Stack, IconButton, Heading, ButtonGroup, Link, useColorModeValue, Tooltip } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 
 const AboutMe: FC = () => {
@@ -20,12 +20,16 @@ const AboutMe: FC = () => {
 
         <CardFooter justifyContent="flex-end">
           <ButtonGroup gap={2}>
-            <Link href="https://github.com/ftrbnd" isExternal>
-              <IconButton aria-label="GitHub profile" icon={<FaGithub />} bgColor={bg} />
-            </Link>
-            <Link href="https://www.linkedin.com/in/ftrbnd/" isExternal>
-              <IconButton aria-label="LinkedIn profile" icon={<FaLinkedin />} bgColor={bg} />
-            </Link>
+            <Tooltip label="GitHub profile" openDelay={1000}>
+              <Link href="https://github.com/ftrbnd" isExternal>
+                <IconButton aria-label="GitHub profile" icon={<FaGithub />} bgColor={bg} />
+              </Link>
+            </Tooltip>
+            <Tooltip label="LinkedIn profile" openDelay={1000}>
+              <Link href="https://www.linkedin.com/in/ftrbnd/" isExternal>
+                <IconButton aria-label="LinkedIn profile" icon={<FaLinkedin />} bgColor={bg} />
+              </Link>
+            </Tooltip>
           </ButtonGroup>
         </CardFooter>
       </Stack>
