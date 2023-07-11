@@ -26,9 +26,9 @@ export default function App() {
             </GridItem>
           ))}
         </Grid>
-
-        <FooterContent />
       </VStack>
+
+      <FooterContent />
     </Flex>
   );
 }

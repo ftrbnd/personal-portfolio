@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 const AboutMe: FC = () => {
   return (
     <Card direction={{ base: 'column', xl: 'row' }} overflow="hidden" variant="filled">
-      <Image objectFit="cover" src="src\assets\me.png" alt="Picture of me" borderRadius="md" maxH="md" />
+      <Image objectFit="cover" src="src\assets\me.png" alt="Picture of me" maxH="md" />
 
       <Stack>
         <CardBody>

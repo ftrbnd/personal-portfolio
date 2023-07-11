@@ -7,7 +7,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 const ProjectCard: FC<Project> = ({ name, description, thumbnailUrl, repoUrl, demoUrl }) => {
   return (
     <Card direction="column" overflow="hidden" variant="filled">
-      <Image objectFit="cover" src={thumbnailUrl} alt={`${name} thumbnail`} />
+      <Image objectFit="cover" src={thumbnailUrl} alt={`${name} thumbnail`} p={3} borderRadius="2xl" />
 
       <Stack>
         <CardHeader>
