@@ -1,30 +1,38 @@
-import { ActionIcon, Card, Group, Text, Image } from '@mantine/core';
-import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
 import { FC } from 'react';
-import { Project } from '../utils';
+import { Project } from '../utils/projects';
+import { CardHeader, Heading, CardBody, CardFooter, IconButton, Card, Stack, Image, Text, ButtonGroup, Link, Tooltip } from '@chakra-ui/react';
+import { FaGithub } from 'react-icons/fa6';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const ProjectCard: FC<Project> = ({ name, description, thumbnailUrl, repoUrl, demoUrl }) => {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder sx={{ height: '100%' }}>
-      <Card.Section>
-        <Image src={thumbnailUrl} height={400} alt={`${name} thumbnail`} />
-      </Card.Section>
+    <Card direction="column" overflow="hidden" variant="filled">
+      <Image objectFit="cover" src={thumbnailUrl} alt={`${name} thumbnail`} />
 
-      <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>{name}</Text>
-        <Group position="right" mt="md" mb="xs">
-          <ActionIcon component="a" href={repoUrl} target="_blank" variant="light" title="GitHub repository">
-            <IconBrandGithub size="1.1rem" />
-          </ActionIcon>
-          <ActionIcon component="a" href={demoUrl} target="_blank" variant="light" title="Live demo">
-            <IconExternalLink size="1.1rem" />
-          </ActionIcon>
-        </Group>
-      </Group>
+      <Stack>
+        <CardHeader>
+          <Heading size="md">{name}</Heading>
+        </CardHeader>
 
-      <Text size="sm" color="dimmed">
-        {description}
-      </Text>
+        <CardBody>
+          <Text py="2">{description}</Text>
+        </CardBody>
+
+        <CardFooter justifyContent="flex-end">
+          <ButtonGroup gap={2}>
+            <Tooltip label="GitHub repository" openDelay={1000}>
+              <Link href={repoUrl} isExternal>
+                <IconButton aria-label="GitHub repository" icon={<FaGithub />} />
+              </Link>
+            </Tooltip>
+            <Tooltip label="Live demo" openDelay={1000}>
+              <Link href={demoUrl} isExternal>
+                <IconButton aria-label="Live demo" icon={<ExternalLinkIcon />} />
+              </Link>
+            </Tooltip>
+          </ButtonGroup>
+        </CardFooter>
+      </Stack>
     </Card>
   );
 };

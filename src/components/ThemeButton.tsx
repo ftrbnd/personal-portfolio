@@ -1,20 +1,14 @@
-import { ActionIcon, Flex, Tooltip, useMantineColorScheme } from '@mantine/core';
-import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import { FC } from 'react';
+import { IconButton, Tooltip, useColorMode } from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const ThemeButton: FC = () => {
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === 'dark';
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Flex justify="flex-end">
-      <Tooltip label={dark ? 'Light mode' : 'Dark mode'}>
-        <ActionIcon variant="outline" color={dark ? 'yellow' : 'blue'} onClick={() => toggleColorScheme()}>
-          {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
-        </ActionIcon>
-      </Tooltip>
-    </Flex>
+    <Tooltip label={colorMode === 'light' ? 'Dark mode' : 'Light mode'} openDelay={1000}>
+      <IconButton aria-label="Toggle color mode" icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />} onClick={toggleColorMode} />
+    </Tooltip>
   );
 };
 

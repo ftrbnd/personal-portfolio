@@ -1,41 +1,20 @@
-import { Header, AppShell, Footer, Grid, Flex } from '@mantine/core';
-import { useState } from 'react';
+import { Flex, Grid, GridItem, VStack } from '@chakra-ui/react';
 import HeaderContent from './components/HeaderContent';
-import AboutMe from './components/AboutMe';
 import ProjectCard from './components/ProjectCard';
-import { projects } from './utils';
+import { projects } from './utils/projects';
+import FooterContent from './components/FooterContent';
+import AboutMe from './components/AboutMe';
 
 export default function App() {
-  const [navbarOpened, setNavbarOpened] = useState(false);
-
   return (
-    <AppShell
-      styles={(theme) => ({
-        main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] }
-      })}
-      padding="md"
-      // navbar={
-      //   <Navbar p="md" hiddenBreakpoint="sm" hidden={!navbarOpened} width={{ sm: 200, lg: 300 }}>
-      //     <Text>Application navbar</Text>
-      //   </Navbar>
-      // }
-      // navbarOffsetBreakpoint="sm"
-      header={
-        <Header height={{ base: 60, md: 70 }} p="md">
-          <HeaderContent navbarOpened={navbarOpened} setNavbarOpened={setNavbarOpened} />
-        </Header>
-      }
-      footer={
-        <Footer height={60} p="xs">
-          {/* {Footer content} */}
-        </Footer>
-      }
-    >
-      <Flex direction="column" gap={{ base: 'sm', sm: 'lg' }} justify="center">
+    <Flex flexDir="column">
+      <HeaderContent />
+
+      <VStack alignSelf="center" p={6} w={{ sm: '90%', md: '75%', lg: '50em', xl: '75em' }}>
         <AboutMe />
-        <Grid columns={3} gutterXs="md" gutterMd="xl" gutterXl={50} sx={{ maxWidth: '75%', alignSelf: 'center' }}>
+        <Grid gap={3} templateColumns={{ sm: '1fr', md: '1fr 1fr', xl: '1fr 1fr 1fr' }} autoRows="1fr">
           {projects.map((project, index) => (
-            <Grid.Col sm={3} md={1.5} lg={1} sx={{ justifySelf: 'center' }}>
+            <GridItem key={`${project.name}-${index}`} w="100%" display="flex">
               <ProjectCard
                 key={`${project.name}-${index}`}
                 name={project.name}
@@ -44,10 +23,12 @@ export default function App() {
                 repoUrl={project.repoUrl}
                 demoUrl={project.demoUrl}
               />
-            </Grid.Col>
+            </GridItem>
           ))}
         </Grid>
-      </Flex>
-    </AppShell>
+
+        <FooterContent />
+      </VStack>
+    </Flex>
   );
 }

@@ -1,30 +1,24 @@
-import { MediaQuery, Burger, useMantineTheme, Grid, Title } from '@mantine/core';
 import { FC } from 'react';
 import ThemeButton from './ThemeButton';
+import { Divider, Flex, Grid, GridItem, Heading, useColorModeValue } from '@chakra-ui/react';
 
-interface IProps {
-  navbarOpened: boolean;
-  setNavbarOpened: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const HeaderContent: FC<IProps> = ({ navbarOpened, setNavbarOpened }) => {
-  const theme = useMantineTheme();
+const HeaderContent: FC = () => {
+  const bg = useColorModeValue('gray.100', 'gray.700');
 
   return (
-    <Grid align="center" style={{ height: '100%' }} gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50}>
-      <Grid.Col span="auto">
-        <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-          <Burger opened={navbarOpened} onClick={() => setNavbarOpened((opened) => !opened)} size="sm" color={theme.colors.gray[6]} mr="xl" />
-        </MediaQuery>{' '}
-      </Grid.Col>
-      <Grid.Col span={6}>
-        <Title order={1} align="center">
-          Giovanni Salas
-        </Title>
-      </Grid.Col>
-      <Grid.Col span="auto">
-        <ThemeButton />
-      </Grid.Col>
+    <Grid templateRows="auto auto" backgroundColor={bg}>
+      <GridItem rowSpan={1}>
+        <Flex p={3} justify="space-between">
+          <Heading as="h1" noOfLines={1}>
+            Giovanni Salas
+          </Heading>
+          <ThemeButton />
+        </Flex>
+      </GridItem>
+
+      <GridItem rowSpan={1}>
+        <Divider orientation="horizontal" />
+      </GridItem>
     </Grid>
   );
 };
