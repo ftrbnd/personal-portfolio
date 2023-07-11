@@ -6,7 +6,7 @@ const FooterContent: FC = () => {
   return (
     <Box bg={useColorModeValue('gray.200', 'gray.900')} color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={4} spacing={4} justify={'center'} align={'center'}>
-        <Heading size="lg">Contact Me</Heading>
+        <Heading size="lg">Contact me</Heading>
         <Heading size="sm">Please get in touch if you think our work could be mutually beneficial!</Heading>
       </Container>
 
