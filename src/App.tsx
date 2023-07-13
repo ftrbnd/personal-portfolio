@@ -1,19 +1,27 @@
-import { Flex, Grid, GridItem, Heading, VStack, useColorMode } from '@chakra-ui/react';
+import { Fade, Flex, Grid, GridItem, Heading, IconButton, VStack, useColorMode } from '@chakra-ui/react';
 import HeaderContent from './components/HeaderContent';
 import ProjectCard from './components/ProjectCard';
 import { projects } from './utils/projects';
 import FooterContent from './components/FooterContent';
 import AboutMe from './components/AboutMe';
 import { useHotkeys } from 'react-hotkeys-hook';
+import useScroll from './utils/useScroll';
+import { ArrowUpIcon } from '@chakra-ui/icons';
 
 export default function App() {
   const { toggleColorMode } = useColorMode();
-
-  const ref = useHotkeys('mod+j', () => toggleColorMode(), { preventDefault: true });
+  const { scrollY, scrollToTop } = useScroll();
+  useHotkeys('mod+j', () => toggleColorMode(), { preventDefault: true });
 
   return (
     <Flex flexDir="column" tabIndex={-1}>
       <HeaderContent />
+
+      {scrollY > 20 && (
+        <Fade in={scrollY > 50} style={{ position: 'fixed', right: 10, bottom: 10 }}>
+          <IconButton aria-label="Scroll to top" icon={<ArrowUpIcon />} onClick={scrollToTop} position="fixed" right={10} bottom={10} />
+        </Fade>
+      )}
 
       <VStack alignSelf="center" p={6} w={{ sm: '90%', md: '75%', lg: '50em', xl: '75em' }} mb={12}>
         <AboutMe />
