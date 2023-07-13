@@ -1,13 +1,18 @@
-import { Flex, Grid, GridItem, Heading, VStack } from '@chakra-ui/react';
+import { Flex, Grid, GridItem, Heading, VStack, useColorMode } from '@chakra-ui/react';
 import HeaderContent from './components/HeaderContent';
 import ProjectCard from './components/ProjectCard';
 import { projects } from './utils/projects';
 import FooterContent from './components/FooterContent';
 import AboutMe from './components/AboutMe';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 export default function App() {
+  const { toggleColorMode } = useColorMode();
+
+  const ref = useHotkeys('mod+j', () => toggleColorMode(), { preventDefault: true });
+
   return (
-    <Flex flexDir="column">
+    <Flex flexDir="column" tabIndex={-1}>
       <HeaderContent />
 
       <VStack alignSelf="center" p={6} w={{ sm: '90%', md: '75%', lg: '50em', xl: '75em' }} mb={12}>
@@ -35,3 +40,10 @@ export default function App() {
     </Flex>
   );
 }
+
+/**
+ * TODO:
+ * - Scroll to top button
+ * - Revealing footer
+ * - Splash of color like on TOP template
+ */
