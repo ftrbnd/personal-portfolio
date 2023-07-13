@@ -1,4 +1,4 @@
-import { Fade, Flex, Grid, GridItem, Heading, IconButton, VStack, useColorMode } from '@chakra-ui/react';
+import { Slide, Flex, Grid, GridItem, Heading, IconButton, VStack, useColorMode } from '@chakra-ui/react';
 import HeaderContent from './components/HeaderContent';
 import ProjectCard from './components/ProjectCard';
 import { projects } from './utils/projects';
@@ -7,6 +7,12 @@ import AboutMe from './components/AboutMe';
 import { useHotkeys } from 'react-hotkeys-hook';
 import useScroll from './utils/useScroll';
 import { ArrowUpIcon } from '@chakra-ui/icons';
+
+const BUTTON_POSITION = {
+  right: 10,
+  bottom: 10,
+  zIndex: 100
+};
 
 export default function App() {
   const { toggleColorMode } = useColorMode();
@@ -17,11 +23,17 @@ export default function App() {
     <Flex flexDir="column" tabIndex={-1}>
       <HeaderContent />
 
-      {scrollY > 20 && (
-        <Fade in={scrollY > 50} style={{ position: 'fixed', right: 10, bottom: 10 }}>
-          <IconButton aria-label="Scroll to top" icon={<ArrowUpIcon />} onClick={scrollToTop} position="fixed" right={10} bottom={10} />
-        </Fade>
-      )}
+      <Slide in={scrollY > 20} direction="right" style={{ position: 'fixed', right: BUTTON_POSITION.right, bottom: BUTTON_POSITION.bottom, zIndex: BUTTON_POSITION.zIndex }}>
+        <IconButton
+          aria-label="Scroll to top"
+          icon={<ArrowUpIcon />}
+          onClick={scrollToTop}
+          position="fixed"
+          right={BUTTON_POSITION.right}
+          bottom={BUTTON_POSITION.bottom}
+          zIndex={BUTTON_POSITION.zIndex}
+        />
+      </Slide>
 
       <VStack alignSelf="center" p={6} w={{ sm: '90%', md: '75%', lg: '50em', xl: '75em' }} mb={12}>
         <AboutMe />
