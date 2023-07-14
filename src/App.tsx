@@ -12,8 +12,7 @@ import useTime from './utils/useTime';
 
 const BUTTON_POSITION = {
   right: 10,
-  bottom: 10,
-  zIndex: 100
+  bottom: 10
 };
 
 export default function App() {
@@ -28,15 +27,7 @@ export default function App() {
       <HeaderContent />
 
       <Slide in={scrollY > 20} direction="right" style={{ right: BUTTON_POSITION.right, bottom: BUTTON_POSITION.bottom }}>
-        <IconButton
-          aria-label="Scroll to top"
-          icon={<ArrowUpIcon />}
-          onClick={scrollToTop}
-          position="fixed"
-          right={BUTTON_POSITION.right}
-          bottom={BUTTON_POSITION.bottom}
-          zIndex={BUTTON_POSITION.zIndex}
-        />
+        <IconButton aria-label="Scroll to top" icon={<ArrowUpIcon />} onClick={scrollToTop} position="fixed" right={BUTTON_POSITION.right} bottom={BUTTON_POSITION.bottom} />
       </Slide>
 
       <VStack alignSelf="center" p={6} w={{ sm: '90%', md: '75%', lg: '50em', xl: '75em' }} mb={12}>
@@ -76,6 +67,4 @@ export default function App() {
 /**
  * TODO:
  * - Revealing footer
- * - Timestamp with location
- * - Splash of color like on TOP template
  */
