@@ -7,7 +7,7 @@ const AboutMe: FC = () => {
 
   return (
     <Card direction={{ base: 'column', xl: 'row' }} overflow="hidden" variant="filled">
-      <Image objectFit="cover" src="src\assets\me.png" alt="Picture of me" maxH="md" />
+      <Image objectFit="cover" src="https://i.imgur.com/EYacoc9.jpg" alt="Picture of me" maxH="md" />
 
       <Stack>
         <CardBody>
