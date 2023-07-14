@@ -16,14 +16,15 @@ const BUTTON_POSITION = {
 
 export default function App() {
   const { toggleColorMode } = useColorMode();
-  const { scrollY, scrollToTop } = useScroll();
+  const { scrollY, atBottom, scrollToTop } = useScroll();
+
   useHotkeys('mod+j', () => toggleColorMode(), { preventDefault: true });
 
   return (
     <Flex flexDir="column" tabIndex={-1}>
       <HeaderContent />
 
-      <Slide in={scrollY > 20} direction="right" style={{ position: 'fixed', right: BUTTON_POSITION.right, bottom: BUTTON_POSITION.bottom, zIndex: BUTTON_POSITION.zIndex }}>
+      <Slide in={scrollY > 20} direction="right" style={{ right: BUTTON_POSITION.right, bottom: BUTTON_POSITION.bottom }}>
         <IconButton
           aria-label="Scroll to top"
           icon={<ArrowUpIcon />}
@@ -55,7 +56,6 @@ export default function App() {
           ))}
         </Grid>
       </VStack>
-
       <FooterContent />
     </Flex>
   );
@@ -63,7 +63,7 @@ export default function App() {
 
 /**
  * TODO:
- * - Scroll to top button
  * - Revealing footer
+ * - Timestamp with location
  * - Splash of color like on TOP template
  */
