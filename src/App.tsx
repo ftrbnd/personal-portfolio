@@ -7,6 +7,8 @@ import AboutMe from './components/AboutMe';
 import { useHotkeys } from 'react-hotkeys-hook';
 import useScroll from './utils/useScroll';
 import { ArrowUpIcon } from '@chakra-ui/icons';
+import { FaLocationDot } from 'react-icons/fa6';
+import useTime from './utils/useTime';
 
 const BUTTON_POSITION = {
   right: 10,
@@ -16,7 +18,8 @@ const BUTTON_POSITION = {
 
 export default function App() {
   const { toggleColorMode } = useColorMode();
-  const { scrollY, atBottom, scrollToTop } = useScroll();
+  const { scrollY, scrollToTop } = useScroll();
+  const { hour, minute, meridiem } = useTime();
 
   useHotkeys('mod+j', () => toggleColorMode(), { preventDefault: true });
 
@@ -37,6 +40,15 @@ export default function App() {
       </Slide>
 
       <VStack alignSelf="center" p={6} w={{ sm: '90%', md: '75%', lg: '50em', xl: '75em' }} mb={12}>
+        <Grid w={'100%'} templateColumns="repeat(2, 1fr)">
+          <GridItem colSpan={1}>
+            <Heading size={'md'}>{`${hour}:${String(minute).padStart(2, '0')} ${meridiem}`}</Heading>
+          </GridItem>
+          <GridItem colSpan={1} display={'flex'} justifyContent={'flex-end'} alignItems={'center'} gap={2}>
+            <FaLocationDot />
+            <Heading size={'md'}>Los Angeles, CA</Heading>
+          </GridItem>
+        </Grid>
         <AboutMe />
         <Heading alignSelf={'start'} mt={12}>
           My work
